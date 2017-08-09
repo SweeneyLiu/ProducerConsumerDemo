@@ -1,5 +1,8 @@
 package demo.lsw.com.producerconsumerdemo;
 
+import android.util.Log;
+
+import java.util.List;
 import java.util.PriorityQueue;
 
 /**
@@ -8,26 +11,14 @@ import java.util.PriorityQueue;
 
 public class Producer1 implements Runnable {
 
-    private PriorityQueue<Integer> priorityQueue;
-    public static final int MAX_SIZE = 10;
+    private Storage mStorage;
 
-    public Producer1(PriorityQueue<Integer> priorityQueue) {
-        this.priorityQueue = priorityQueue;
+    public Producer1(Storage storage) {
+        this.mStorage = storage;
     }
 
     @Override
     public void run() {
-        while(true){
-            synchronized (priorityQueue){
-                while(priorityQueue.size() == MAX_SIZE){
-                    try {
-                        priorityQueue.wait();
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    }
-
-                }
-            }
-        }
+        mStorage.set();
     }
 }

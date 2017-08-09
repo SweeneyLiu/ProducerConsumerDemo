@@ -7,8 +7,15 @@ package demo.lsw.com.producerconsumerdemo;
  */
 
 public class Consumer1 implements Runnable {
+
+    private Storage mStorage;
+
+    public Consumer1(Storage storage) {
+        mStorage = storage;
+    }
+
     @Override
     public void run() {
-
+        mStorage.get();
     }
 }

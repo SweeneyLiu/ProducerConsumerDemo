@@ -21,7 +21,8 @@ public class Consumer implements Runnable{
 
         while(true){
             try {
-                Log.i("正在消费",mBlockingQueue.take().toString());
+                Log.i("lsw--消费目前容量：",mBlockingQueue.size()+"");
+                Log.i("lsw--正在消费",mBlockingQueue.take().toString());
                 Thread.sleep(2000);
             } catch (InterruptedException e) {
                 e.printStackTrace();
